@@ -1,16 +1,30 @@
 import React from 'react';
-import {update} from '../BooksAPI';
+import {update, getAll} from '../BooksAPI';
 const Book = (props) => {
     const handleChange = async (e) => {
-        e.persist()
         try {
             const theShelf = e.target.value;
             const theResult = await update(props, theShelf);
             props.handleShelf(props, theShelf, theResult);
+            const myBooks = await getAll();
+            props.pushBooks(myBooks);
+            
         } catch(error) {
             console.log(error);
         }
+
+        try {
+            
+            const myBooks = await getAll();
+            props.pushBooks(myBooks);
+            
+        } catch(error) {
+            console.log(error);
+        }
+
+
     }
+    
     return (
         <div>
             <li>

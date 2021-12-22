@@ -62,7 +62,7 @@ class Search extends Component {
                                     book.shelf = "none";
                                 }
                                 return (
-                                    <Book key={book.id} {...book} handleShelf={this.props.handleShelf} />
+                                    <Book key={book.id} {...book} pushBooks={this.props.pushBooks} handleShelf={this.props.handleShelf} />
                                 );
                             })}
                         </ol>

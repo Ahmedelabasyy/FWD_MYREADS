@@ -16,14 +16,17 @@ export class index extends Component {
                 this.setState({myBooks, currentlyReading, wantToRead, read});
             },
             handleShelf: (book, newShelf, mainShelfs) => {
-                const movedBooks = this.state.myBooks.map(oneBook => {
-                    const bookId = mainShelfs[newShelf].find(selectedBook => selectedBook === oneBook.id);
-                    if(bookId) {
-                        oneBook.shelf = newShelf;
-                    }
-                    return oneBook;
-                });
-                this.state.pushBooks(movedBooks);
+                if(newShelf !== "none") {
+                    const movedBooks = this.state.myBooks.map(oneBook => {
+                        const bookId = mainShelfs[newShelf].find(selectedBook => selectedBook === oneBook.id);
+                        if(bookId) {
+                            oneBook.shelf = newShelf;
+                        }
+    
+                        return oneBook;
+                    });
+                    this.state.pushBooks(movedBooks);
+                }
             }
         };
     }

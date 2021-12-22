@@ -9,7 +9,7 @@ class Home extends Component {
     async componentDidMount() {
         try{
             const myBooks = await getAll();
-            this.props.pushBooks(myBooks)
+            this.props.pushBooks(myBooks);
 
         } catch(error) {
             console.log(error);
@@ -23,9 +23,9 @@ class Home extends Component {
                     <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
-                    <Shelf title="Currently Reading" books={this.props.currentlyReading} handleShelf={this.props.handleShelf} />
-                    <Shelf title="Want to Read" books={this.props.wantToRead} handleShelf={this.props.handleShelf} />
-                    <Shelf title="Read" books={this.props.read} handleShelf={this.props.handleShelf} />
+                    <Shelf title="Currently Reading" books={this.props.currentlyReading} pushBooks={this.props.pushBooks} handleShelf={this.props.handleShelf} />
+                    <Shelf title="Want to Read" books={this.props.wantToRead} pushBooks={this.props.pushBooks} handleShelf={this.props.handleShelf} />
+                    <Shelf title="Read" books={this.props.read} pushBooks={this.props.pushBooks} handleShelf={this.props.handleShelf} />
                 </div>
                 <AddBook />
             </div>
